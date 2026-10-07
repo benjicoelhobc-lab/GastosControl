@@ -85,3 +85,60 @@ while True:
 					print("Situação: Vc gastou exatamente a sua renda.")
 				else:
 					print("Situação: Vc está no vermelho")
+
+        case 5:
+			print("\n==========ESTATÍSTICA==========")
+
+			if len(gastos) == 0:
+				print("Nenhum gasto cadastrado.")
+
+			elif renda_mensal == 0:
+				print("Vc ainda não informou sua renda mensal.")
+
+			else:
+				media = total_gasto / len(gastos)
+				print("Média dos gastos: R$ ", media)
+				print("\nGastos por categoria:")
+
+				alimentacao = 0
+				transporte = 0
+				lazer = 0
+				saude = 0
+				outros = 0
+
+				for gasto in gastos:
+					if gasto["Categoria"] == "Alimentação":
+						alimentacao += gasto["Valor"]
+
+					elif gasto["Categoria"] == "Transporte":
+						transporte += gasto["Valor"]
+
+					elif gasto["Categoria"] == "Lazer":
+						lazer += gasto["Valor"]
+
+					elif gasto["Categoria"] == "Saúde":
+						saude += gasto["Valor"]
+
+					elif gasto["Categoria"] == "Outros":
+						outros += gasto["Valor"]
+
+				porcentagem_alimentacao = (alimentacao / renda_mensal) * 100
+				porcentagem_transporte = (transporte / renda_mensal) * 100
+				porcentagem_lazer = (lazer / renda_mensal) * 100
+				porcentagem_saude = (saude / renda_mensal) * 100
+				porcentagem_outros = (outros / renda_mensal) * 100
+				porcentagem_total = (total_gasto / renda_mensal) * 100
+
+				print(f"Alimentação: R$ {alimentacao:.2f} - {porcentagem_alimentacao:.2f}% da renda")
+				print(f"Transporte: R$ {transporte:.2f} - {porcentagem_transporte:.2f}% da renda")
+				print(f"Lazer: R$ {lazer:.2f} - {porcentagem_lazer:.2f}% da renda")
+				print(f"Saúde: R$ {saude:.2f} - {porcentagem_saude:.2f}% da renda")
+				print(f"Outros: R$ {outros:.2f} - {porcentagem_outros:.2f}% da renda")
+				print(f"Total gasto: R$ {total_gasto:.2f} - {porcentagem_total:.2f}% da renda")
+
+		case 6:
+			print("Programa encerrado.")
+			break
+
+		case _:
+			print("Opção inválida. Tente novamente.")
